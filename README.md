@@ -20,8 +20,7 @@
 <p align="center">
   <a href="#-menu">Menu</a> -
   <a href="#installation">Install</a> -
-  <a href="#-showcase">Showcase</a> -
-  <a href="#seed-audio-api-and-skill">API + Skill</a> -
+  <a href="#seed-audio-10-api-quick-start">API Quick Start</a> -
   <a href="#getting-an-api-key">API Key</a> -
   <a href="https://evolink.ai/seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=readme-top">Try on EvoLink</a>
 </p>
@@ -35,8 +34,7 @@
 - [What is This?](#what-is-this)
 - [Installation](#installation)
 - [Getting an API Key](#getting-an-api-key)
-- [Showcase](#-showcase)
-- [Seed-Audio API And Skill](#seed-audio-api-and-skill)
+- [Seed Audio 1.0 API Quick Start](#seed-audio-10-api-quick-start)
 - [File Structure](#file-structure)
 - [Troubleshooting](#troubleshooting)
 - [Compatibility](#compatibility)
@@ -156,16 +154,7 @@ scripts/seed-audio-generate.sh \
 
 ---
 
-## 🖼️ Showcase
-
-| API first run | Voice references | Agent install |
-|---|---|---|
-| <img src="assets/showcase/first-run.jpg" alt="seed-audio-api-first-run" width="100%"> | <img src="assets/showcase/voice-reference.jpg" alt="seed-audio-voice-reference" width="100%"> | <img src="assets/showcase/agent-install.jpg" alt="seed-audio-agent-install" width="100%"> |
-| Create a task, poll status, and print generated audio URLs. | Use preset voices or reference-audio URLs with `@audio1`, `@audio2`, and `@audio3`. | Install the skill into Claude Code, OpenCode, OpenClaw, or Cursor skills directories. |
-
----
-
-## Seed-Audio API And Skill
+## Seed Audio 1.0 API Quick Start
 
 ### Quick API Request
 
@@ -254,7 +243,7 @@ See [docs/api-reference.md](docs/api-reference.md), [docs/task-lifecycle.md](doc
 ├── docs/
 ├── examples/
 ├── references/
-└── assets/
+└── assets/banner.jpg
 ```
 
 ---
