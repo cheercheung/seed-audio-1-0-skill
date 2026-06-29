@@ -5,3 +5,5 @@ node_modules/
 tmp/
 dist/
 
+API_REPO_REVIEW.md
+.gitignore
