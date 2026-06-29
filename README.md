@@ -26,22 +26,6 @@
   <a href="https://evolink.ai/seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=readme-top">Try on EvoLink</a>
 </p>
 
-<p align="center">
-  <a href="README.md"><img src="https://img.shields.io/badge/English-Read-111111" alt="English"></a>
-  <a href="README.es.md"><img src="https://img.shields.io/badge/Espanol-Ver-ffb703" alt="Espanol"></a>
-  <a href="README.pt.md"><img src="https://img.shields.io/badge/Portugues-Ver-2a9d8f" alt="Portugues"></a>
-  <a href="README.ja.md"><img src="https://img.shields.io/badge/Japanese-Read-52b788" alt="Japanese"></a>
-  <a href="README.ko.md"><img src="https://img.shields.io/badge/Korean-Read-4ea8de" alt="Korean"></a>
-  <a href="README.de.md"><img src="https://img.shields.io/badge/Deutsch-Ansehen-f4a261" alt="Deutsch"></a>
-  <a href="README.fr.md"><img src="https://img.shields.io/badge/Francais-Voir-e76f51" alt="Francais"></a>
-  <a href="README.tr.md"><img src="https://img.shields.io/badge/Turkce-Goruntule-d62828" alt="Turkce"></a>
-  <a href="README.zh-TW.md"><img src="https://img.shields.io/badge/ZH--TW-Read-8338ec" alt="Traditional Chinese"></a>
-  <a href="README.zh-CN.md"><img src="https://img.shields.io/badge/ZH--CN-Read-ef476f" alt="Simplified Chinese"></a>
-  <a href="README.ru.md"><img src="https://img.shields.io/badge/Russian-Read-577590" alt="Russian"></a>
-</p>
-
----
-
 > **AI Agent?** Skip the README, go straight to [**llms-install.md**](llms-install.md) for step-by-step installation instructions designed for you.
 
 ---

@@ -1,8 +1,8 @@
 {
-  "ownerId": "REPLACE_WITH_EVOLINK_OWNER_ID",
+  "ownerId": "Cheer",
   "slug": "seed-audio-1-0",
   "version": "1.0.0",
-  "publishedAt": 0,
+  "publishedAt": 1782721680000,
   "name": "Seed Audio 1.0",
   "description": "Generate speech, dialogue, ambience, sound effects, and mixed audio scenes with Seed Audio 1.0 through EvoLink.",
   "homepage": "https://github.com/cheercheung/seed-audio-1-0-skill",
@@ -13,4 +13,3 @@
     "evolink"
   ]
 }
-

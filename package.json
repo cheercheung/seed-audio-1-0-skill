@@ -15,7 +15,10 @@
     "docs/",
     "examples/",
     "LICENSE",
-    "!README.*.md"
+    "!README.*.md",
+    "!scripts/validate_repo.py",
+    "!**/__pycache__/",
+    "!**/*.pyc"
   ],
   "keywords": [
     "seed-audio",

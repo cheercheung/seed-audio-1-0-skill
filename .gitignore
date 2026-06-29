@@ -6,6 +6,8 @@ tmp/
 dist/
 *.tgz
 .codex/
+__pycache__/
+*.py[cod]
 API_REPO_REVIEW.md
 github-repo-review.md
 github-repo-review-action-list.md

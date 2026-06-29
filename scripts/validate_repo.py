@@ -13,16 +13,6 @@ ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = [
     "README.md",
-    "README.es.md",
-    "README.pt.md",
-    "README.ja.md",
-    "README.ko.md",
-    "README.de.md",
-    "README.fr.md",
-    "README.tr.md",
-    "README.zh-TW.md",
-    "README.zh-CN.md",
-    "README.ru.md",
     "SKILL.md",
     "llms-install.md",
     "_meta.json",
@@ -111,6 +101,19 @@ def run(cmd: list[str]) -> tuple[int, str]:
 
 def main() -> int:
     errors: list[str] = []
+    release_mode = "--release" in sys.argv[1:]
+    disabled_translation_files = [
+        "README.es.md",
+        "README.pt.md",
+        "README.ja.md",
+        "README.ko.md",
+        "README.de.md",
+        "README.fr.md",
+        "README.tr.md",
+        "README.zh-TW.md",
+        "README.zh-CN.md",
+        "README.ru.md",
+    ]
 
     for rel in REQUIRED_FILES:
         path = ROOT / rel
@@ -128,12 +131,23 @@ def main() -> int:
             if snippet not in text:
                 errors.append(f"{rel} missing snippet: {snippet}")
 
+    readme_text = (ROOT / "README.md").read_text(encoding="utf-8")
+    for rel in disabled_translation_files:
+        if rel in readme_text:
+            errors.append(f"README.md links to disabled translation file: {rel}")
+
     package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
     meta = json.loads((ROOT / "_meta.json").read_text(encoding="utf-8"))
     if package["version"] != meta["version"]:
         errors.append("package.json version does not match _meta.json version")
     if meta["slug"] != "seed-audio-1-0":
         errors.append("_meta.json slug mismatch")
+    if release_mode:
+        if meta.get("ownerId") in {"", "REPLACE_WITH_EVOLINK_OWNER_ID"}:
+            errors.append("_meta.json ownerId must be the real EvoLink owner ID before release")
+        published_at = meta.get("publishedAt")
+        if not isinstance(published_at, int) or published_at <= 0:
+            errors.append("_meta.json publishedAt must be a Unix timestamp in milliseconds before release")
     if package["bin"].get("evolink-seed-audio") not in {"./bin/cli.js", "bin/cli.js"}:
         errors.append("package.json bin mismatch")
     if package.get("engines", {}).get("node") != ">=16":
@@ -171,6 +185,8 @@ def main() -> int:
     print("PASS")
     print(f"root={ROOT}")
     print(f"required_files={len(REQUIRED_FILES)}")
+    if release_mode:
+        print("release_mode=true")
     return 0
 
 
