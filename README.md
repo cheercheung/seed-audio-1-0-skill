@@ -25,6 +25,20 @@
   <a href="https://evolink.ai/seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=readme-top">Try on EvoLink</a>
 </p>
 
+<p align="center">
+  <a href="README.md"><img src="https://img.shields.io/badge/🇺🇸_English-Read-111111" alt="English"></a>
+  <a href="README.es.md"><img src="https://img.shields.io/badge/🇪🇸_Español-Ver-ffb703" alt="Español"></a>
+  <a href="README.pt.md"><img src="https://img.shields.io/badge/🇵🇹_Português-Ver-2a9d8f" alt="Português"></a>
+  <a href="README.ja.md"><img src="https://img.shields.io/badge/🇯🇵_日本語-表示-52b788" alt="日本語"></a>
+  <a href="README.ko.md"><img src="https://img.shields.io/badge/🇰🇷_한국어-보기-4ea8de" alt="한국어"></a>
+  <a href="README.de.md"><img src="https://img.shields.io/badge/🇩🇪_Deutsch-Ansehen-f4a261" alt="Deutsch"></a>
+  <a href="README.fr.md"><img src="https://img.shields.io/badge/🇫🇷_Français-Voir-e76f51" alt="Français"></a>
+  <a href="README.tr.md"><img src="https://img.shields.io/badge/🇹🇷_Türkçe-Görüntüle-d62828" alt="Türkçe"></a>
+  <a href="README.zh-TW.md"><img src="https://img.shields.io/badge/🇹🇼_繁體中文-查看-8338ec" alt="繁體中文"></a>
+  <a href="README.zh-CN.md"><img src="https://img.shields.io/badge/🇨🇳_简体中文-查看-ef476f" alt="简体中文"></a>
+  <a href="README.ru.md"><img src="https://img.shields.io/badge/🇷🇺_Русский-Смотреть-577590" alt="Русский"></a>
+</p>
+
 > **AI Agent?** Skip the README, go straight to [**llms-install.md**](llms-install.md) for step-by-step installation instructions designed for you.
 
 ---
@@ -42,12 +56,14 @@
 - [Community](#community)
 - [Star History](#star-history)
 
+<a id="what-is-this"></a>
+
 ## What is This?
 
 | Field | Value |
 |---|---|
 | Skill | Seed Audio 1.0 Skill |
-| Model | `doubao-seed-audio-1-0` |
+| Model | Seed Audio 1.0 (`doubao-seed-audio-1-0`) |
 | Maintained surface | `api-skill` |
 | User entrances | API quickstart and agent skill install |
 
@@ -59,6 +75,8 @@ Use this repository when you want to:
 - inspect request parameters, response shapes, callbacks, errors, and voice references
 
 ---
+
+<a id="installation"></a>
 
 ## Installation
 
@@ -134,6 +152,8 @@ EVOLINK_API_KEY=your_key_here npx evolink-seed-audio@latest -y --path ~/.claude/
 
 ---
 
+<a id="getting-an-api-key"></a>
+
 ## Getting an API Key
 
 1. Open [EvoLink API Keys](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=api-key).
@@ -153,6 +173,8 @@ scripts/seed-audio-generate.sh \
 ```
 
 ---
+
+<a id="seed-audio-10-api-quick-start"></a>
 
 ## Seed Audio 1.0 API Quick Start
 
@@ -198,7 +220,7 @@ scripts/seed-audio-generate.sh \
 | Mode | How to use it |
 |---|---|
 | Text to audio | Pass `prompt` only. |
-| Voice reference | Pass up to 3 `audio_references`; refer to them as `@audio1`, `@audio2`, `@audio3` in the prompt. |
+| Voice reference | Pass up to 3 `audio_references`; refer to them as `@audio1`, `@audio2`, and `@audio3` in the prompt. |
 | Reference image | Pass one `image_urls` item. Do not combine `image_urls` with `audio_references`. |
 | Callback | Pass `callback_url` to receive terminal task states. |
 
@@ -229,11 +251,14 @@ See [docs/api-reference.md](docs/api-reference.md), [docs/task-lifecycle.md](doc
 
 ---
 
+<a id="file-structure"></a>
+
 ## File Structure
 
 ```text
 .
 ├── README.md
+├── README.es.md ... README.ru.md
 ├── SKILL.md
 ├── llms-install.md
 ├── _meta.json
@@ -248,6 +273,8 @@ See [docs/api-reference.md](docs/api-reference.md), [docs/task-lifecycle.md](doc
 
 ---
 
+<a id="troubleshooting"></a>
+
 ## Troubleshooting
 
 | Issue | Likely cause | Action |
@@ -258,6 +285,8 @@ See [docs/api-reference.md](docs/api-reference.md), [docs/task-lifecycle.md](doc
 | No audio URL found | Response shape changed or task has no generated asset yet | Save the full task JSON and compare with `docs/response-schema.md`. |
 
 ---
+
+<a id="compatibility"></a>
 
 ## Compatibility
 
@@ -272,11 +301,15 @@ See [docs/api-reference.md](docs/api-reference.md), [docs/task-lifecycle.md](doc
 
 ---
 
+<a id="license"></a>
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
 
 ---
+
+<a id="community"></a>
 
 ## Community
 
@@ -286,6 +319,8 @@ MIT. See [LICENSE](LICENSE).
 - [Read the official voice list](https://docs.evolink.ai/en/api-manual/audio-series/doubao-seed-audio/doubao-seed-audio-1-0-voices?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=community-voices)
 
 ---
+
+<a id="star-history"></a>
 
 ## Star History
 
