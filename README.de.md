@@ -1,5 +1,7 @@
 # Seed Audio 1.0 Skill
 
+<!-- TODO: translate visible prose for this language. Keep commands, JSON, package names, UTM links, and code blocks in English. -->
+
 <p align="center">
   <strong>Generate speech, dialogue, ambience, sound effects, and mixed audio scenes with Seed Audio 1.0 through EvoLink.</strong>
 </p>
@@ -42,7 +44,7 @@
 
 ---
 
-> **AI Agent?** Skip the README, go straight to [**llms-install.md**](llms-install.md) for step-by-step installation instructions designed for you.
+> **KI-Agent? Uberspringe das README und offne direkt [**llms-install.md**](llms-install.md) fur schrittweise Installationsanweisungen.**
 
 ---
 

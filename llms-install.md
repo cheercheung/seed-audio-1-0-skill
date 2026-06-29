@@ -1,6 +1,6 @@
-# Doubao Seed-Audio 1.0 Skill - Agent Installation Guide
+# Seed Audio 1.0 Skill - Agent Installation Guide
 
-You are an AI agent. Follow these steps to install the Doubao Seed-Audio 1.0 audio generation skill.
+You are an AI agent. Follow these steps to install and verify the Seed Audio 1.0 audio generation skill.
 
 ## Step 1: Install
 
@@ -16,7 +16,7 @@ Replace `{SKILLS_DIR}` with the target skills directory:
 |---|---|
 | Claude Code | `~/.claude/skills` |
 | OpenCode | `~/.opencode/skills` |
-| OpenClaw | omit `--path` or use `~/.openclaw/skills` |
+| OpenClaw | `~/.openclaw/skills` |
 | Cursor | project `.cursor/skills` or `~/.cursor/skills` |
 | Other | ask the user where skills should be installed |
 
@@ -40,7 +40,7 @@ Set it for the current shell:
 export EVOLINK_API_KEY=their_key_here
 ```
 
-## Step 3: Load The Skill Definition
+## Step 3: Load the Skill Definition
 
 Print the skill definition:
 
@@ -51,7 +51,7 @@ npx evolink-seed-audio@latest --skill
 Or read the installed file:
 
 ```text
-{SKILLS_DIR}/doubao-seed-audio/SKILL.md
+{SKILLS_DIR}/seed-audio-1-0/SKILL.md
 ```
 
 ## Quick Verify
@@ -59,10 +59,16 @@ Or read the installed file:
 Dry-run the request payload without spending credits:
 
 ```bash
-{SKILLS_DIR}/doubao-seed-audio/scripts/seed-audio-generate.sh --prompt "Short audio test" --dry-run
+{SKILLS_DIR}/seed-audio-1-0/scripts/seed-audio-generate.sh --prompt "Short audio test" --dry-run
 ```
 
 If you see JSON with `"model": "doubao-seed-audio-1-0"`, installation is wired correctly.
+
+## One-Liner
+
+```bash
+EVOLINK_API_KEY=your_key_here npx evolink-seed-audio@latest -y --path {SKILLS_DIR} && {SKILLS_DIR}/seed-audio-1-0/scripts/seed-audio-generate.sh --prompt "Short audio test" --dry-run
+```
 
 ## Available Commands
 
@@ -73,4 +79,3 @@ If you see JSON with `"model": "doubao-seed-audio-1-0"`, installation is wired c
 | `npx evolink-seed-audio -y --path <dir>` | Silent install to a directory |
 | `npx evolink-seed-audio --help` | Show CLI help |
 | `npx evolink-seed-audio --version` | Show package version |
-

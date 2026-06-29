@@ -4,6 +4,8 @@ node_modules/
 *.log
 tmp/
 dist/
-
+*.tgz
+.codex/
 API_REPO_REVIEW.md
-.gitignore
+github-repo-review.md
+github-repo-review-action-list.md

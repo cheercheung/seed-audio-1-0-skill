@@ -1,4 +1,4 @@
-# Doubao Seed-Audio 1.0 API Reference
+# Seed Audio 1.0 API Reference
 
 ## Create Audio Generation Task
 

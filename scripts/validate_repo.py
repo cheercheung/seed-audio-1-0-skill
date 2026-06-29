@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static validation for the Doubao Seed-Audio API skill repository."""
+"""Static validation for the Seed Audio API skill repository."""
 
 from __future__ import annotations
 
@@ -13,6 +13,16 @@ ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = [
     "README.md",
+    "README.es.md",
+    "README.pt.md",
+    "README.ja.md",
+    "README.ko.md",
+    "README.de.md",
+    "README.fr.md",
+    "README.tr.md",
+    "README.zh-TW.md",
+    "README.zh-CN.md",
+    "README.ru.md",
     "SKILL.md",
     "llms-install.md",
     "_meta.json",
@@ -30,6 +40,17 @@ REQUIRED_FILES = [
     "examples/curl/complete-flow.sh",
     "examples/javascript/complete-flow.mjs",
     "examples/python/complete_flow.py",
+    "assets/banner.jpg",
+    "assets/showcase/first-run.jpg",
+    "assets/showcase/voice-reference.jpg",
+    "assets/showcase/agent-install.jpg",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "SECURITY.md",
+    "SUPPORT.md",
+    ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/docs_request.yml",
+    ".github/pull_request_template.md",
     "LICENSE",
     ".gitignore",
     ".npmignore",
@@ -39,8 +60,11 @@ REQUIRED_SNIPPETS = {
     "README.md": [
         "doubao-seed-audio-1-0",
         "EVOLINK_API_KEY",
-        "Complete First-Run Flow",
-        "Agent Skill Install",
+        "## 📑 Menu",
+        "## Installation",
+        "## 🖼️ Showcase",
+        "## Troubleshooting",
+        "Powered by",
     ],
     "docs/api-reference.md": [
         "POST https://api.evolink.ai/v1/audios/generations",
@@ -49,10 +73,26 @@ REQUIRED_SNIPPETS = {
         "image_urls",
     ],
     "SKILL.md": [
-        "name: doubao-seed-audio",
+        "name: seed-audio-1-0",
         "scripts/seed-audio-generate.sh",
         "TASK_SUBMITTED",
         "AUDIO_URL",
+        "## When to Activate This Skill",
+        "## After Installation",
+        "## Core Principles",
+        "## Flow",
+        "## Script Output Protocol",
+        "## Error Handling",
+        "## Model Capabilities Summary",
+    ],
+    "llms-install.md": [
+        "{SKILLS_DIR}",
+        "## One-Liner",
+        "npx evolink-seed-audio --llms",
+    ],
+    "CONTRIBUTING.md": [
+        "python3 scripts/validate_repo.py",
+        "Real API smoke tests require owner approval",
     ],
 }
 
@@ -92,10 +132,12 @@ def main() -> int:
     meta = json.loads((ROOT / "_meta.json").read_text(encoding="utf-8"))
     if package["version"] != meta["version"]:
         errors.append("package.json version does not match _meta.json version")
-    if meta["slug"] != "doubao-seed-audio":
+    if meta["slug"] != "seed-audio-1-0":
         errors.append("_meta.json slug mismatch")
-    if package["bin"].get("evolink-seed-audio") != "./bin/cli.js":
+    if package["bin"].get("evolink-seed-audio") not in {"./bin/cli.js", "bin/cli.js"}:
         errors.append("package.json bin mismatch")
+    if package.get("engines", {}).get("node") != ">=16":
+        errors.append("package.json engines.node must be >=16")
 
     for cmd in [
         ["node", "--check", "bin/cli.js"],
@@ -129,11 +171,8 @@ def main() -> int:
     print("PASS")
     print(f"root={ROOT}")
     print(f"required_files={len(REQUIRED_FILES)}")
-    print("api_smoke_test=skipped_no_owner_approval")
-    print("owner_id_status=placeholder_blocks_public_release")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

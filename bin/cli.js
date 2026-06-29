@@ -8,15 +8,16 @@ const os = require("os");
 const { spawnSync } = require("child_process");
 
 const PKG_ROOT = path.resolve(__dirname, "..");
-const SKILL_SLUG = "doubao-seed-audio";
+const SKILL_SLUG = "seed-audio-1-0";
 const PKG_JSON = JSON.parse(fs.readFileSync(path.join(PKG_ROOT, "package.json"), "utf8"));
 
 function printHelp() {
-  console.log(`Doubao Seed-Audio 1.0 Skill Installer v${PKG_JSON.version}
+  console.log(`Seed Audio 1.0 Skill Installer v${PKG_JSON.version}
 
 Usage:
   npx evolink-seed-audio                 interactive installer
   npx evolink-seed-audio -y              non-interactive installer
+  npx evolink-seed-audio --yes           non-interactive installer
   npx evolink-seed-audio -y --path <dir> install to a specific skills directory
   npx evolink-seed-audio --llms          print agent installation guide
   npx evolink-seed-audio --skill         print SKILL.md

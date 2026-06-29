@@ -1,4 +1,4 @@
-# Doubao Seed-Audio 1.0 Quickstart
+# Seed Audio 1.0 Quickstart
 
 ## 1. Set API Key
 
