@@ -47,8 +47,8 @@ export EVOLINK_API_KEY=your_key_here
 
 - Ask all missing required inputs in one message.
 - Do not ask for optional parameters unless the user's goal needs them.
-- Use `--dry-run` before spending credits when the user wants to inspect the request.
-- After `TASK_SUBMITTED:` appears, do not rerun automatically; the API task may already be billable.
+- Use `--dry-run` only when the user wants to inspect the request before submission.
+- After `TASK_SUBMITTED:` appears, do not rerun automatically; a server-side task already exists.
 
 ## Flow
 

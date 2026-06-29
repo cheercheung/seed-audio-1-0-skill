@@ -146,10 +146,12 @@ EVOLINK_API_KEY=your_key_here npx evolink-seed-audio@latest -y --path ~/.claude/
 export EVOLINK_API_KEY="your_key_here"
 ```
 
-4. Run the dry-run command before spending credits:
+4. Start a generation task:
 
 ```bash
-scripts/seed-audio-generate.sh --prompt "Short audio test" --dry-run
+scripts/seed-audio-generate.sh \
+  --prompt "Create a short welcome narration with a warm studio voice." \
+  --format mp3
 ```
 
 ---

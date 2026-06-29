@@ -56,7 +56,7 @@ Or read the installed file:
 
 ## Quick Verify
 
-Dry-run the request payload without spending credits:
+Verify the installed script without submitting a generation task:
 
 ```bash
 {SKILLS_DIR}/seed-audio-1-0/scripts/seed-audio-generate.sh --prompt "Short audio test" --dry-run
