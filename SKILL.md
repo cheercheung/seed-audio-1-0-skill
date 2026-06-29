@@ -1,8 +1,7 @@
 ---
 name: seed-audio-1-0
-description: Seed Audio 1.0 audio generation via EvoLink API for Claude Code, OpenCode, OpenClaw, Cursor, and other agents. Supports text-to-audio, voice references, reference-image guidance, callbacks, and async task polling.
+description: Seed Audio 1.0 audio generation via EvoLink API for Codex, Claude Code, Hermes Agent, and other agents. Supports text-to-audio, voice references, reference-image guidance, callbacks, and async task polling.
 homepage: https://github.com/cheercheung/seed-audio-1-0-skill
-metadata: {"openclaw":{"homepage":"https://github.com/cheercheung/seed-audio-1-0-skill","requires":{"bins":["curl","python3"],"env":["EVOLINK_API_KEY"]},"primaryEnv":"EVOLINK_API_KEY"}}
 ---
 
 # Seed Audio 1.0 Generation
@@ -56,8 +55,8 @@ export EVOLINK_API_KEY=your_key_here
 2. Check `EVOLINK_API_KEY`. If absent, ask for it before any real API call.
 3. Ask ALL missing required parameters in ONE single message. Never split required input collection into multiple rounds.
 4. Execute by agent type:
-   - Claude Code: run the script in the shell and keep reading output until `TASK_COMPLETED:`, `POLL_TIMEOUT:`, or `ERROR:` appears.
-   - OpenClaw / OpenCode / Cursor: run the script as a blocking command; the script handles polling internally.
+   - Codex and Claude Code: run the script in the shell and keep reading output until `TASK_COMPLETED:`, `POLL_TIMEOUT:`, or `ERROR:` appears.
+   - Hermes Agent: run the script as a blocking command; the script handles polling internally.
 
 Critical rule: once `TASK_SUBMITTED:` appears, do not rerun the script unless the user explicitly asks. Query the task instead.
 

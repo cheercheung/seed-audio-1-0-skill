@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://docs.evolink.ai/en/api-manual/audio-series/doubao-seed-audio/doubao-seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=banner">
+  <a href="https://evolink.ai/seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=banner">
     <img src="assets/banner.jpg" alt="seed-audio-1-0-agent-skill" width="100%" />
   </a>
 </p>
@@ -20,7 +20,6 @@
 <p align="center">
   <a href="#-menu">Menü</a> -
   <a href="#installation">Installieren</a> -
-  <a href="#seed-audio-10-api-quick-start">API-Schnellstart</a> -
   <a href="#getting-an-api-key">API-Schlüssel</a> -
   <a href="https://evolink.ai/seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=readme-top">Auf EvoLink testen</a>
 </p>
@@ -48,13 +47,9 @@
 - [Was ist das?](#what-is-this)
 - [Installation](#installation)
 - [API-Schlüssel erhalten](#getting-an-api-key)
-- [Seed Audio 1.0 API-Schnellstart](#seed-audio-10-api-quick-start)
-- [Dateistruktur](#file-structure)
 - [Fehlerbehebung](#troubleshooting)
 - [Kompatibilität](#compatibility)
 - [Lizenz](#license)
-- [Community](#community)
-- [Star-Verlauf](#star-history)
 
 <a id="what-is-this"></a>
 
@@ -63,9 +58,9 @@
 | Feld | Wert |
 |---|---|
 | Skill | Seed Audio 1.0 Skill |
-| Modell | Seed Audio 1.0 (`doubao-seed-audio-1-0`) |
+| Modell | Seed Audio 1.0 |
 | Gepflegte Oberfläche | `api-skill` |
-| Einstiege für Nutzer | API-Schnellstart und Agent-Skill-Installation |
+| Einstiege für Nutzer | Agent-Skill-Installation und API-Key-Einrichtung |
 
 Verwende dieses Repository, wenn du Folgendes tun möchtest:
 
@@ -80,10 +75,10 @@ Verwende dieses Repository, wenn du Folgendes tun möchtest:
 
 ## Installation
 
-### Schnellinstallation (OpenClaw)
+### Schnellinstallation (Codex)
 
 ```bash
-openclaw skills add https://github.com/cheercheung/seed-audio-1-0-skill
+npx evolink-seed-audio -y --path ~/.codex/skills
 ```
 
 ### Installation über npm (empfohlen)
@@ -101,7 +96,7 @@ npx evolink-seed-audio -y
 In ein bestimmtes Skills-Verzeichnis installieren:
 
 ```bash
-npx evolink-seed-audio -y --path ~/.claude/skills
+npx evolink-seed-audio -y --path ~/.codex/skills
 ```
 
 ### Manuelle Installation
@@ -109,45 +104,45 @@ npx evolink-seed-audio -y --path ~/.claude/skills
 ```bash
 git clone https://github.com/cheercheung/seed-audio-1-0-skill.git
 cd seed-audio-1-0-skill
-openclaw skills add .
+node bin/cli.js -y --path ~/.codex/skills
 ```
 
 ### Automatische Agent-Installation
 
+Codex:
+
+```text
+Installiere den Seed Audio Skill mit:
+npx evolink-seed-audio@latest -y --path ~/.codex/skills
+
+Setze danach EVOLINK_API_KEY und lies:
+~/.codex/skills/seed-audio-1-0/SKILL.md
+```
+
 Claude Code:
 
 ```text
-Install the Seed Audio skill by running:
+Installiere den Seed Audio Skill mit:
 npx evolink-seed-audio@latest -y --path ~/.claude/skills
 
-Setze anschließend EVOLINK_API_KEY und lies:
+Setze danach EVOLINK_API_KEY und lies:
 ~/.claude/skills/seed-audio-1-0/SKILL.md
 ```
 
-OpenCode:
+Hermes Agent:
 
 ```text
-Install the Seed Audio skill by running:
-npx evolink-seed-audio@latest -y --path ~/.opencode/skills
+Installiere den Seed Audio Skill mit:
+npx evolink-seed-audio@latest -y --path ~/.hermes/skills
 
-Setze anschließend EVOLINK_API_KEY und lies:
-~/.opencode/skills/seed-audio-1-0/SKILL.md
-```
-
-OpenClaw:
-
-```text
-Install the Seed Audio skill by running:
-npx evolink-seed-audio@latest -y --path ~/.openclaw/skills
-
-Setze anschließend EVOLINK_API_KEY und lies:
-~/.openclaw/skills/seed-audio-1-0/SKILL.md
+Setze danach EVOLINK_API_KEY und lies:
+~/.hermes/skills/seed-audio-1-0/SKILL.md
 ```
 
 Einzeiler:
 
 ```bash
-EVOLINK_API_KEY=your_key_here npx evolink-seed-audio@latest -y --path ~/.claude/skills
+EVOLINK_API_KEY=your_key_here npx evolink-seed-audio@latest -y --path ~/.codex/skills
 ```
 
 ---
@@ -172,107 +167,6 @@ scripts/seed-audio-generate.sh \
   --format mp3
 ```
 
----
-
-<a id="seed-audio-10-api-quick-start"></a>
-
-## Seed Audio 1.0 API-Schnellstart
-
-### Schneller API-Request
-
-```bash
-curl --request POST \
-  --url https://api.evolink.ai/v1/audios/generations \
-  --header "Authorization: Bearer ${EVOLINK_API_KEY}" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "model": "doubao-seed-audio-1-0",
-    "prompt": "Create a 20-second premium product video audio bed: soft electronic music, subtle camera whoosh, a glass bottle placed on marble, calm female narration, clean studio ambience.",
-    "format": "mp3",
-    "sample_rate": 24000
-  }'
-```
-
-Die API ist asynchron. Der Create-Request gibt eine Task-`id` zurück; frage den Status ab, bis die Task `completed`, `failed` oder `cancelled` ist:
-
-```bash
-curl --request GET \
-  --url "https://api.evolink.ai/v1/tasks/{task_id}" \
-  --header "Authorization: Bearer ${EVOLINK_API_KEY}"
-```
-
-### Vollständiger Erstdurchlauf
-
-```bash
-node examples/javascript/complete-flow.mjs
-```
-
-Oder verwende das mitgelieferte Skript:
-
-```bash
-scripts/seed-audio-generate.sh \
-  --prompt "Create a cinematic 15-second rainforest ambience with distant birds, light rain, and a calm documentary narrator." \
-  --format mp3
-```
-
-### Generierungsmodi
-
-| Modus | Verwendung |
-|---|---|
-| Text zu Audio | Übergebe nur `prompt`. |
-| Stimmreferenz | Übergebe bis zu 3 `audio_references`; referenziere sie im Prompt als `@audio1`, `@audio2` und `@audio3`. |
-| Referenzbild | Übergebe ein Element in `image_urls`. Kombiniere `image_urls` nicht mit `audio_references`. |
-| Callback | Übergebe `callback_url`, um terminale Task-Status zu erhalten. |
-
-### Skriptreferenz
-
-```bash
-scripts/seed-audio-generate.sh --help
-npx evolink-seed-audio@latest --llms
-npx evolink-seed-audio@latest --skill
-```
-
-### API-Parameter
-
-| Parameter | Erforderlich | Hinweise |
-|---|---:|---|
-| `model` | ja | `doubao-seed-audio-1-0` verwenden |
-| `prompt` | ja | Bis zu 1500 Zeichen |
-| `audio_references` | no | Bis zu 3 Preset-Stimmen oder Referenz-Audio-URLs |
-| `image_urls` | no | Eine Referenzbild-URL |
-| `format` | no | `wav`, `mp3`, `pcm`, `ogg_opus`; Standard `wav` |
-| `sample_rate` | no | `8000`, `16000`, `24000`, `32000`, `44100`, `48000` |
-| `speech_rate` | no | `0.5` bis `2.0` |
-| `loudness_rate` | no | `0.5` bis `2.0` |
-| `pitch_rate` | no | `-12` bis `12` Halbtöne |
-| `callback_url` | no | HTTPS-Callback-URL für terminale Task-Status |
-
-Siehe [docs/api-reference.md](docs/api-reference.md), [docs/task-lifecycle.md](docs/task-lifecycle.md), [docs/response-schema.md](docs/response-schema.md), [docs/errors.md](docs/errors.md), [docs/callbacks.md](docs/callbacks.md), [docs/voices.md](docs/voices.md) und [references/api-params.md](references/api-params.md).
-
----
-
-<a id="file-structure"></a>
-
-## Dateistruktur
-
-```text
-.
-├── README.md
-├── README.es.md ... README.ru.md
-├── SKILL.md
-├── llms-install.md
-├── _meta.json
-├── package.json
-├── bin/cli.js
-├── scripts/seed-audio-generate.sh
-├── docs/
-├── examples/
-├── references/
-└── assets/banner.jpg
-```
-
----
-
 <a id="troubleshooting"></a>
 
 ## Fehlerbehebung
@@ -292,10 +186,9 @@ Siehe [docs/api-reference.md](docs/api-reference.md), [docs/task-lifecycle.md](d
 
 | Agent oder Runtime | Installationsmethode | Status |
 |---|---|---|
+| Codex | `npx evolink-seed-audio -y --path ~/.codex/skills` | Unterstützt |
 | Claude Code | `npx evolink-seed-audio -y --path ~/.claude/skills` | Unterstützt |
-| OpenCode | `npx evolink-seed-audio -y --path ~/.opencode/skills` | Unterstützt per Pfadinstallation |
-| OpenClaw | `openclaw skills add` oder `npx ... --path ~/.openclaw/skills` | Unterstützt |
-| Cursor | `npx ... --path ~/.cursor/skills` oder Projekt `.cursor/skills` | Unterstützt |
+| Hermes Agent | `npx evolink-seed-audio -y --path ~/.hermes/skills` | Unterstützt per Pfadinstallation |
 | Node.js | `>=16` | Von `package.json` gefordert |
 | Shell | bash + curl + python3 | Von `scripts/seed-audio-generate.sh` gefordert |
 
@@ -306,27 +199,6 @@ Siehe [docs/api-reference.md](docs/api-reference.md), [docs/task-lifecycle.md](d
 ## Lizenz
 
 MIT. Siehe [LICENSE](LICENSE).
-
----
-
-<a id="community"></a>
-
-## Community
-
-- [Seed-Audio auf EvoLink testen](https://evolink.ai/seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=community)
-- [Einen EvoLink API-Schlüssel erstellen](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=community-api-key)
-- [Offizielle API-Dokumentation lesen](https://docs.evolink.ai/en/api-manual/audio-series/doubao-seed-audio/doubao-seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=community-docs)
-- [Offizielle Stimmenliste lesen](https://docs.evolink.ai/en/api-manual/audio-series/doubao-seed-audio/doubao-seed-audio-1-0-voices?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=community-voices)
-
----
-
-<a id="star-history"></a>
-
-## Star-Verlauf
-
-```text
-Der Star-Verlauf ist verfügbar, sobald das Repository öffentlich ist.
-```
 
 <p align="center">
   Powered by <a href="https://evolink.ai?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=footer">EvoLink</a>

@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://docs.evolink.ai/en/api-manual/audio-series/doubao-seed-audio/doubao-seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=banner">
+  <a href="https://evolink.ai/seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=banner">
     <img src="assets/banner.jpg" alt="seed-audio-1-0-agent-skill" width="100%" />
   </a>
 </p>
@@ -20,7 +20,6 @@
 <p align="center">
   <a href="#-menu">Menü</a> -
   <a href="#installation">Kurulum</a> -
-  <a href="#seed-audio-10-api-quick-start">API Hızlı Başlangıç</a> -
   <a href="#getting-an-api-key">API Anahtarı</a> -
   <a href="https://evolink.ai/seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=readme-top">EvoLink’te dene</a>
 </p>
@@ -48,13 +47,9 @@
 - [Bu nedir?](#what-is-this)
 - [Kurulum](#installation)
 - [API anahtarı alma](#getting-an-api-key)
-- [Seed Audio 1.0 API Hızlı Başlangıç](#seed-audio-10-api-quick-start)
-- [Dosya yapısı](#file-structure)
 - [Sorun giderme](#troubleshooting)
 - [Uyumluluk](#compatibility)
 - [Lisans](#license)
-- [Topluluk](#community)
-- [Yıldız geçmişi](#star-history)
 
 <a id="what-is-this"></a>
 
@@ -63,9 +58,9 @@
 | Alan | Değer |
 |---|---|
 | Skill | Seed Audio 1.0 Skill |
-| Model | Seed Audio 1.0 (`doubao-seed-audio-1-0`) |
+| Model | Seed Audio 1.0 |
 | Bakımı yapılan yüzey | `api-skill` |
-| Kullanıcı girişleri | API hızlı başlangıcı ve ajan skill kurulumu |
+| Kullanıcı girişleri | agent skill kurulumu ve API anahtarı ayarı |
 
 Şunları yapmak istediğinizde bu depoyu kullanın:
 
@@ -80,10 +75,10 @@
 
 ## Kurulum
 
-### Hızlı kurulum (OpenClaw)
+### Hızlı kurulum (Codex)
 
 ```bash
-openclaw skills add https://github.com/cheercheung/seed-audio-1-0-skill
+npx evolink-seed-audio -y --path ~/.codex/skills
 ```
 
 ### npm ile kurulum (önerilir)
@@ -101,7 +96,7 @@ npx evolink-seed-audio -y
 Belirli bir skills dizinine kurulum:
 
 ```bash
-npx evolink-seed-audio -y --path ~/.claude/skills
+npx evolink-seed-audio -y --path ~/.codex/skills
 ```
 
 ### Manuel kurulum
@@ -109,45 +104,45 @@ npx evolink-seed-audio -y --path ~/.claude/skills
 ```bash
 git clone https://github.com/cheercheung/seed-audio-1-0-skill.git
 cd seed-audio-1-0-skill
-openclaw skills add .
+node bin/cli.js -y --path ~/.codex/skills
 ```
 
-### Ajan otomatik kurulumu
+### Agent otomatik kurulumu
+
+Codex:
+
+```text
+Seed Audio skillini şu komutla kurun:
+npx evolink-seed-audio@latest -y --path ~/.codex/skills
+
+Ardından EVOLINK_API_KEY ayarlayın ve şunu okuyun:
+~/.codex/skills/seed-audio-1-0/SKILL.md
+```
 
 Claude Code:
 
 ```text
-Install the Seed Audio skill by running:
+Seed Audio skillini şu komutla kurun:
 npx evolink-seed-audio@latest -y --path ~/.claude/skills
 
-Sonra EVOLINK_API_KEY değerini ayarlayın ve şunu okuyun:
+Ardından EVOLINK_API_KEY ayarlayın ve şunu okuyun:
 ~/.claude/skills/seed-audio-1-0/SKILL.md
 ```
 
-OpenCode:
+Hermes Agent:
 
 ```text
-Install the Seed Audio skill by running:
-npx evolink-seed-audio@latest -y --path ~/.opencode/skills
+Seed Audio skillini şu komutla kurun:
+npx evolink-seed-audio@latest -y --path ~/.hermes/skills
 
-Sonra EVOLINK_API_KEY değerini ayarlayın ve şunu okuyun:
-~/.opencode/skills/seed-audio-1-0/SKILL.md
+Ardından EVOLINK_API_KEY ayarlayın ve şunu okuyun:
+~/.hermes/skills/seed-audio-1-0/SKILL.md
 ```
 
-OpenClaw:
-
-```text
-Install the Seed Audio skill by running:
-npx evolink-seed-audio@latest -y --path ~/.openclaw/skills
-
-Sonra EVOLINK_API_KEY değerini ayarlayın ve şunu okuyun:
-~/.openclaw/skills/seed-audio-1-0/SKILL.md
-```
-
-Tek satır komut:
+Tek satır:
 
 ```bash
-EVOLINK_API_KEY=your_key_here npx evolink-seed-audio@latest -y --path ~/.claude/skills
+EVOLINK_API_KEY=your_key_here npx evolink-seed-audio@latest -y --path ~/.codex/skills
 ```
 
 ---
@@ -172,107 +167,6 @@ scripts/seed-audio-generate.sh \
   --format mp3
 ```
 
----
-
-<a id="seed-audio-10-api-quick-start"></a>
-
-## Seed Audio 1.0 API Hızlı Başlangıç
-
-### Hızlı API isteği
-
-```bash
-curl --request POST \
-  --url https://api.evolink.ai/v1/audios/generations \
-  --header "Authorization: Bearer ${EVOLINK_API_KEY}" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "model": "doubao-seed-audio-1-0",
-    "prompt": "Create a 20-second premium product video audio bed: soft electronic music, subtle camera whoosh, a glass bottle placed on marble, calm female narration, clean studio ambience.",
-    "format": "mp3",
-    "sample_rate": 24000
-  }'
-```
-
-API asenkrondur. Oluşturma isteği bir görev `id` değeri döndürür; görev `completed`, `failed` veya `cancelled` olana kadar sorgulayın:
-
-```bash
-curl --request GET \
-  --url "https://api.evolink.ai/v1/tasks/{task_id}" \
-  --header "Authorization: Bearer ${EVOLINK_API_KEY}"
-```
-
-### Tam ilk çalıştırma akışı
-
-```bash
-node examples/javascript/complete-flow.mjs
-```
-
-Ya da paketle gelen script’i kullanın:
-
-```bash
-scripts/seed-audio-generate.sh \
-  --prompt "Create a cinematic 15-second rainforest ambience with distant birds, light rain, and a calm documentary narrator." \
-  --format mp3
-```
-
-### Üretim modları
-
-| Mod | Nasıl kullanılır |
-|---|---|
-| Metinden sese | Yalnızca `prompt` gönderin. |
-| Ses referansı | En fazla 3 `audio_references` gönderin; prompt içinde `@audio1`, `@audio2` ve `@audio3` olarak referans verin. |
-| Referans görsel | Bir `image_urls` öğesi gönderin. `image_urls` ile `audio_references` değerlerini birlikte kullanmayın. |
-| Callback | Terminal görev durumlarını almak için `callback_url` gönderin. |
-
-### Script referansı
-
-```bash
-scripts/seed-audio-generate.sh --help
-npx evolink-seed-audio@latest --llms
-npx evolink-seed-audio@latest --skill
-```
-
-### API parametreleri
-
-| Parametre | Gerekli | Notlar |
-|---|---:|---|
-| `model` | evet | `doubao-seed-audio-1-0` kullanın |
-| `prompt` | evet | En fazla 1500 karakter |
-| `audio_references` | no | En fazla 3 hazır ses veya referans ses URL’si |
-| `image_urls` | no | Bir referans görsel URL’si |
-| `format` | no | `wav`, `mp3`, `pcm`, `ogg_opus`; varsayılan `wav` |
-| `sample_rate` | no | `8000`, `16000`, `24000`, `32000`, `44100`, `48000` |
-| `speech_rate` | no | `0.5` ile `2.0` arası |
-| `loudness_rate` | no | `0.5` ile `2.0` arası |
-| `pitch_rate` | no | `-12` ile `12` yarım ton arası |
-| `callback_url` | no | Terminal görev durumları için HTTPS callback URL’si |
-
-Bkz. [docs/api-reference.md](docs/api-reference.md), [docs/task-lifecycle.md](docs/task-lifecycle.md), [docs/response-schema.md](docs/response-schema.md), [docs/errors.md](docs/errors.md), [docs/callbacks.md](docs/callbacks.md), [docs/voices.md](docs/voices.md) ve [references/api-params.md](references/api-params.md).
-
----
-
-<a id="file-structure"></a>
-
-## Dosya yapısı
-
-```text
-.
-├── README.md
-├── README.es.md ... README.ru.md
-├── SKILL.md
-├── llms-install.md
-├── _meta.json
-├── package.json
-├── bin/cli.js
-├── scripts/seed-audio-generate.sh
-├── docs/
-├── examples/
-├── references/
-└── assets/banner.jpg
-```
-
----
-
 <a id="troubleshooting"></a>
 
 ## Sorun giderme
@@ -292,10 +186,9 @@ Bkz. [docs/api-reference.md](docs/api-reference.md), [docs/task-lifecycle.md](do
 
 | Ajan veya runtime | Kurulum yöntemi | Durum |
 |---|---|---|
+| Codex | `npx evolink-seed-audio -y --path ~/.codex/skills` | Desteklenir |
 | Claude Code | `npx evolink-seed-audio -y --path ~/.claude/skills` | Desteklenir |
-| OpenCode | `npx evolink-seed-audio -y --path ~/.opencode/skills` | Yol belirterek kurulum desteklenir |
-| OpenClaw | `openclaw skills add` veya `npx ... --path ~/.openclaw/skills` | Desteklenir |
-| Cursor | `npx ... --path ~/.cursor/skills` veya proje `.cursor/skills` | Desteklenir |
+| Hermes Agent | `npx evolink-seed-audio -y --path ~/.hermes/skills` | Yol belirterek kurulum desteklenir |
 | Node.js | `>=16` | `package.json` tarafından gereklidir |
 | Shell | bash + curl + python3 | `scripts/seed-audio-generate.sh` tarafından gereklidir |
 
@@ -306,27 +199,6 @@ Bkz. [docs/api-reference.md](docs/api-reference.md), [docs/task-lifecycle.md](do
 ## Lisans
 
 MIT. Bkz. [LICENSE](LICENSE).
-
----
-
-<a id="community"></a>
-
-## Topluluk
-
-- [Seed-Audio’yu EvoLink’te dene](https://evolink.ai/seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=community)
-- [EvoLink API anahtarı oluştur](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=community-api-key)
-- [Resmi API belgelerini oku](https://docs.evolink.ai/en/api-manual/audio-series/doubao-seed-audio/doubao-seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=community-docs)
-- [Resmi ses listesini oku](https://docs.evolink.ai/en/api-manual/audio-series/doubao-seed-audio/doubao-seed-audio-1-0-voices?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=community-voices)
-
----
-
-<a id="star-history"></a>
-
-## Yıldız geçmişi
-
-```text
-Depo herkese açık olduğunda yıldız geçmişi kullanılabilir.
-```
 
 <p align="center">
   Powered by <a href="https://evolink.ai?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=footer">EvoLink</a>

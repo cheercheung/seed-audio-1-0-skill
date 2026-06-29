@@ -14,10 +14,9 @@ Replace `{SKILLS_DIR}` with the target skills directory:
 
 | Agent | SKILLS_DIR |
 |---|---|
+| Codex | `~/.codex/skills` |
 | Claude Code | `~/.claude/skills` |
-| OpenCode | `~/.opencode/skills` |
-| OpenClaw | `~/.openclaw/skills` |
-| Cursor | project `.cursor/skills` or `~/.cursor/skills` |
+| Hermes Agent | `~/.hermes/skills` |
 | Other | ask the user where skills should be installed |
 
 ## Step 2: Set API Key

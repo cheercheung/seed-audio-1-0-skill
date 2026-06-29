@@ -28,9 +28,9 @@
     "text-to-audio",
     "voice-cloning",
     "evolink",
-    "openclaw",
+    "codex",
     "claude-code",
-    "opencode"
+    "hermes-agent"
   ],
   "author": "EvoLink AI",
   "license": "MIT",

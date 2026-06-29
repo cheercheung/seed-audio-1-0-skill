@@ -59,12 +59,14 @@ REQUIRED_FILES = [
 
 REQUIRED_SNIPPETS = {
     "README.md": [
-        "doubao-seed-audio-1-0",
         "EVOLINK_API_KEY",
         "## 📑 Menu",
         "## Installation",
-        "## Seed Audio 1.0 API Quick Start",
         "## Troubleshooting",
+        "Codex",
+        "Claude Code",
+        "Hermes Agent",
+        "https://evolink.ai/seed-audio-1-0?utm_source=github&utm_medium=repo&utm_campaign=seed-audio-1-0-skill&utm_content=banner",
         "Powered by",
     ],
     "docs/api-reference.md": [
@@ -161,11 +163,22 @@ def main() -> int:
     base_code_blocks = fenced_code_blocks(readme_text)
     expected_code_block_count = len(base_code_blocks)
     required_readme_tokens = [
-        "doubao-seed-audio-1-0",
         "EVOLINK_API_KEY",
         "npx evolink-seed-audio",
         "scripts/seed-audio-generate.sh",
-        "https://api.evolink.ai/v1/audios/generations",
+        "Codex",
+        "Claude Code",
+        "Hermes Agent",
+    ]
+    forbidden_readme_tokens = [
+        "OpenCode",
+        "OpenClaw",
+        "Cursor",
+        "seed-audio-10-api-quick-start",
+        "File Structure",
+        "Community",
+        "Star History",
+        "API Quick Start",
     ]
     forbidden_translation_tokens = [
         "TODO",
@@ -187,6 +200,9 @@ def main() -> int:
         for token in required_readme_tokens:
             if token not in text:
                 errors.append(f"{rel} missing required technical token: {token}")
+        for token in forbidden_readme_tokens:
+            if token in text:
+                errors.append(f"{rel} contains removed README token: {token}")
         for token in forbidden_translation_tokens:
             if token in text:
                 errors.append(f"{rel} contains forbidden translation placeholder: {token}")

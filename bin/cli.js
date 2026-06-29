@@ -37,14 +37,14 @@ function expandHome(p) {
 function defaultSkillsDir() {
   const home = os.homedir();
   const candidates = [
-    path.join(home, ".openclaw", "skills"),
+    path.join(home, ".codex", "skills"),
     path.join(home, ".claude", "skills"),
-    path.join(home, ".opencode", "skills")
+    path.join(home, ".hermes", "skills")
   ];
   for (const candidate of candidates) {
     if (fs.existsSync(candidate)) return candidate;
   }
-  return path.join(home, ".openclaw", "skills");
+  return path.join(home, ".codex", "skills");
 }
 
 function copyDir(src, dest) {
