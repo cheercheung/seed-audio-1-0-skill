@@ -1,0 +1,16 @@
+{
+  "ownerId": "REPLACE_WITH_EVOLINK_OWNER_ID",
+  "slug": "doubao-seed-audio",
+  "version": "1.0.0",
+  "publishedAt": 0,
+  "name": "Doubao Seed-Audio 1.0",
+  "description": "Generate speech, dialogue, ambience, sound effects, and mixed audio scenes with Doubao Seed-Audio 1.0 through EvoLink.",
+  "homepage": "https://github.com/EvoLinkAI/doubao-seed-audio-api-skill",
+  "tags": [
+    "audio-generation",
+    "text-to-audio",
+    "voice-cloning",
+    "evolink"
+  ]
+}
+

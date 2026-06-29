@@ -1,0 +1,40 @@
+{
+  "name": "evolink-seed-audio",
+  "version": "1.0.0",
+  "description": "Doubao Seed-Audio 1.0 API and agent skill for EvoLink audio generation",
+  "bin": {
+    "evolink-seed-audio": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "SKILL.md",
+    "llms-install.md",
+    "_meta.json",
+    "scripts/",
+    "references/",
+    "docs/",
+    "examples/",
+    "LICENSE"
+  ],
+  "keywords": [
+    "seed-audio",
+    "doubao-seed-audio",
+    "audio-generation",
+    "text-to-audio",
+    "voice-cloning",
+    "evolink",
+    "openclaw",
+    "claude-code",
+    "opencode"
+  ],
+  "author": "EvoLink AI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EvoLinkAI/doubao-seed-audio-api-skill"
+  },
+  "homepage": "https://evolink.ai/seed-audio-1-0",
+  "engines": {
+    "node": ">=16"
+  }
+}
